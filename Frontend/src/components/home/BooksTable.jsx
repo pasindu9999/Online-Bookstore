@@ -6,43 +6,42 @@ import { BsInfoCircle } from "react-icons/bs";
 
 const BooksTable = ({books}) => {
   return (
-    <table className="w-full border-separate border-spacing-2">
-      <thead>
+    <table className="w-full border-collapse shadow-lg rounded-lg overflow-hidden">
+      <thead className="bg-sky-100 text-sky-900">
         <tr>
-          <th className="border-slate-600 rounded-md">No</th>
-          <th className="border-slate-600 rounded-md">Title</th>
-          <th className="border-slate-600 rounded-md max-md:hidden">Author</th>
-          <th className="border-slate-600 rounded-md max-md:hidden">
-            Publish Year
-          </th>
-          <th className="border-slate-600 rounded-md">Operations</th>
+          <th className="px-4 py-2 text-left">No</th>
+          <th className="px-4 py-2 text-left">Title</th>
+          <th className="px-4 py-2 text-left max-md:hidden">Author</th>
+          <th className="px-4 py-2 text-left max-md:hidden">Publish Year</th>
+          <th className="px-4 py-2 text-left">Operations</th>
         </tr>
       </thead>
       <tbody>
         {books.map((book, index) => (
-          <tr key={book._id} className="h-8">
-            <td className="border border-slate-700 rounded-md text-center">
-              {index + 1}
-            </td>
-            <td className="border border-slate-700 rounded-md text-center">
-              {book.title}
-            </td>
-            <td className="border border-slate-700 rounded-md text-center max-md:hidden">
-              {book.author}
-            </td>
-            <td className="border border-slate-700 rounded-md text-center max-md:hidden">
-              {book.publishYear}
-            </td>
-            <td className="border border-slate-700 rounded-md text-center">
-              <div className="flex justify-center gap-x-4">
-                <Link to={`/books/details/${book._id}`}>
-                  <BsInfoCircle className="text-2xl text-green-800"></BsInfoCircle>
+          <tr key={book._id} className="hover:bg-sky-50 transition-colors">
+            <td className="px-4 py-2">{index + 1}</td>
+            <td className="px-4 py-2">{book.title}</td>
+            <td className="px-4 py-2 max-md:hidden">{book.author}</td>
+            <td className="px-4 py-2 max-md:hidden">{book.publishYear}</td>
+            <td className="px-4 py-2">
+              <div className="flex gap-x-3 text-lg items-center">
+                <Link
+                  to={`/books/details/${book._id}`}
+                  className="hover:text-green-600"
+                >
+                  <BsInfoCircle />
                 </Link>
-                <Link to={`/books/edit/${book._id}`}>
-                  <AiOutlineEdit className="text-2xl text-yellow-600"></AiOutlineEdit>
+                <Link
+                  to={`/books/edit/${book._id}`}
+                  className="hover:text-yellow-500"
+                >
+                  <AiOutlineEdit />
                 </Link>
-                <Link to={`/books/delete/${book._id}`}>
-                  <MdOutlineDelete className="text-2xl text-red-600"></MdOutlineDelete>
+                <Link
+                  to={`/books/delete/${book._id}`}
+                  className="hover:text-red-500"
+                >
+                  <MdOutlineDelete />
                 </Link>
               </div>
             </td>
